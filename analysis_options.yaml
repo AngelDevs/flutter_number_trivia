@@ -1,0 +1,19 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    prefer_const_literals_to_create_immutables: true
+    parameter_assignments: true
+    unnecessary_const: true
+
+analyzer:
+  errors:
+    missing_required_param: error
+    missing_return: error
+    parameter_assignments: error
+    prefer_const_literals_to_create_immutables: warning
+    unnecessary_const: warning
+
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
