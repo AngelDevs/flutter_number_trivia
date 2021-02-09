@@ -1,37 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia/number_trivia.dart';
-
-class NumberTriviaModel extends NumberTrivia {
-  const NumberTriviaModel({
-    @required String text,
-    @required int number,
-  }) : super(
-          text: text,
-          number: number,
-        );
-
-  factory NumberTriviaModel.fromJson(Map<String, dynamic> json) {
-    return NumberTriviaModel(
-      number: json['number'] == null
-          ? null
-          : _numberFromJson(
-              json['number'],
-            ),
-      text: json['text'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "text": text,
-      "number": number,
-    };
-  }
-}
-
-int _numberFromJson(num number) => number.toInt();
-
-/* import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia/number_trivia.dart';
 
@@ -63,4 +30,3 @@ class NumberTriviaModel extends NumberTrivia {
 }
 
 int _numberFromJson(num number) => number.toInt();
- */
