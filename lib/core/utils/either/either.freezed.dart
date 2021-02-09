@@ -101,23 +101,15 @@ class _$LeftCopyWithImpl<L, R, $Res> extends _$EitherCopyWithImpl<L, R, $Res>
 }
 
 /// @nodoc
-class _$Left<L, R> with DiagnosticableTreeMixin implements Left<L, R> {
+class _$Left<L, R> implements Left<L, R> {
   const _$Left(this.left) : assert(left != null);
 
   @override
   final L left;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Either<$L, $R>.left(left: $left)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Either<$L, $R>.left'))
-      ..add(DiagnosticsProperty('left', left));
   }
 
   @override
@@ -223,23 +215,15 @@ class _$RightCopyWithImpl<L, R, $Res> extends _$EitherCopyWithImpl<L, R, $Res>
 }
 
 /// @nodoc
-class _$Right<L, R> with DiagnosticableTreeMixin implements Right<L, R> {
+class _$Right<L, R> implements Right<L, R> {
   const _$Right(this.right) : assert(right != null);
 
   @override
   final R right;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Either<$L, $R>.right(right: $right)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Either<$L, $R>.right'))
-      ..add(DiagnosticsProperty('right', right));
   }
 
   @override

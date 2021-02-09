@@ -16,20 +16,18 @@ void main() {
     mockNumberTriviaRepository = MockNumberTriviaRepository();
     useCase = GetRandomNumberTrivia(mockNumberTriviaRepository);
   });
-
-  const number = 1;
   const numberTrivia = NumberTrivia(number: 1, text: 'test');
 
   test(
     'should get trivia for random number',
     () async {
       // arrange
-      when(mockNumberTriviaRepository.getRandomNumberTrivia(any)).thenAnswer(
+      when(mockNumberTriviaRepository.getRandomNumberTrivia()).thenAnswer(
         (_) async => const Right(numberTrivia),
       );
 
       // act
-      final result = await useCase(number);
+      final result = await useCase();
 
       // assert
       expect(
@@ -38,7 +36,7 @@ void main() {
       );
 
       verify(
-        mockNumberTriviaRepository.getRandomNumberTrivia(number),
+        mockNumberTriviaRepository.getRandomNumberTrivia(),
       );
     },
   );

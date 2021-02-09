@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'either.freezed.dart';
 
-@immutable
 @freezed
 abstract class Either<L, R> with _$Either<L, R> {
   const factory Either.left(L left) = Left<L, R>;
