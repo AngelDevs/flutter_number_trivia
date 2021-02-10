@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:number_trivia/core/errors/exceptions/exceptions.dart';
+import 'package:number_trivia/core/errors/failure/failure.dart';
 import 'package:number_trivia/core/platform/network/network_info.dart';
-import 'package:number_trivia/core/utils/either/either.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_datasource.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_remote_datasource.dart';
 import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model/number_trivia_model.dart';
@@ -86,6 +88,45 @@ void main() {
               expect(result, equals(Right(numberTrivia)));
             },
           );
+
+          test(
+            'should cache the data locally when the call to remote datasource is successful ',
+            () async {
+              // arrange
+              when(mockRemoteDataSource.getSpecificNumberTrivia(any))
+                  .thenAnswer(
+                (_) async => numberTriviaModel,
+              );
+              // act
+              await repository.getSpecificNumberTrivia(number);
+
+              // expect
+              verify(mockRemoteDataSource.getSpecificNumberTrivia(number));
+              verify(mockLocalDataSource.cacheNumberTrivia(numberTriviaModel));
+            },
+          );
+
+          test(
+            'should return server failure when the call to remote datasource is unsuccessful ',
+            () async {
+              // arrange
+              when(mockRemoteDataSource.getSpecificNumberTrivia(any)).thenThrow(
+                ServerException(),
+              );
+              // act
+              final result = await repository.getSpecificNumberTrivia(number);
+
+              // expect
+              verify(mockRemoteDataSource.getSpecificNumberTrivia(number));
+              verifyZeroInteractions(mockLocalDataSource);
+              expect(
+                result,
+                equals(
+                  Left(ServerFailure()),
+                ),
+              );
+            },
+          );
         },
       );
 
@@ -97,6 +138,24 @@ void main() {
               (_) async => false,
             );
           });
+
+          test(
+            'should return last locally cached data when the cached data is present',
+            () async {
+              // arrange
+              when(mockLocalDataSource.getLastNumberTrivia()).thenAnswer(
+                (_) async => numberTriviaModel,
+              );
+
+              // act
+              final result = await repository.getSpecificNumberTrivia(number);
+
+              // assert
+              verifyZeroInteractions(mockRemoteDataSource);
+              verify(mockLocalDataSource.getLastNumberTrivia);
+              expect(result, Right(numberTrivia));
+            },
+          );
         },
       );
     },

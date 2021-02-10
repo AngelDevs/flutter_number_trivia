@@ -1,7 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
+import 'package:number_trivia/core/errors/exceptions/exceptions.dart';
 import 'package:number_trivia/core/errors/failure/failure.dart';
 import 'package:number_trivia/core/platform/network/network_info.dart';
-import 'package:number_trivia/core/utils/either/either.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_datasource.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_remote_datasource.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia/number_trivia.dart';
@@ -28,7 +29,18 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
     int number,
   ) async {
     networkInfo.isConnected;
+    try {
+      return await tryGetSpecificNumberTrivia(number);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
 
-    return Right(await remoteDataSource.getSpecificNumberTrivia(number));
+  Future<Right<Failure, NumberTrivia>> tryGetSpecificNumberTrivia(
+    int number,
+  ) async {
+    final remoteTrivia = await remoteDataSource.getSpecificNumberTrivia(number);
+    localDataSource.cacheNumberTrivia(remoteTrivia);
+    return Right(remoteTrivia);
   }
 }
