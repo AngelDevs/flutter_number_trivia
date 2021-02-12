@@ -7,7 +7,7 @@ import 'package:number_trivia/core/platform/network/network_info_checker.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_datasource/number_trivia_local_datasource.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_remote_datasource/number_trivia_remote_datasource.dart';
 import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model/number_trivia_model.dart';
-import 'package:number_trivia/features/number_trivia/data/repositories/number_trivia_repository_impl.dart';
+import 'package:number_trivia/features/number_trivia/data/repositories/number_trivia_repository_data.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia/number_trivia.dart';
 
 class MockRemoteDataSource extends Mock

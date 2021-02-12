@@ -1,6 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:number_trivia/core/platform/network/connectivity_network_info_checker.dart';
 import 'package:number_trivia/core/platform/network/network_info_checker.dart';
 
 class MockConnectivity extends Mock implements Connectivity {}
