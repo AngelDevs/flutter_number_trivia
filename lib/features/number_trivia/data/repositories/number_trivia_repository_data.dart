@@ -8,22 +8,22 @@ import 'package:number_trivia/features/number_trivia/data/datasources/number_tri
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia/number_trivia.dart';
 import 'package:number_trivia/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
-class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
-  const NumberTriviaRepositoryImpl({
+class NumberTriviaRepositoryData implements NumberTriviaRepository {
+  const NumberTriviaRepositoryData({
     @required this.remoteDataSource,
     @required this.localDataSource,
-    @required this.networkInfo,
+    @required this.netWorkInfo,
   });
 
   final NumberTriviaRemoteDataSource remoteDataSource;
   final NumberTriviaLocalDataSource localDataSource;
-  final NetWorkInfoChecker networkInfo;
+  final NetWorkInfoChecker netWorkInfo;
 
   @override
   Future<Either<Failure, NumberTrivia>> getSpecificNumberTrivia(
     int number,
   ) async {
-    if (await networkInfo.isConnected) {
+    if (await netWorkInfo.isConnected) {
       return await _getRemoteSpecificNumberTrivia(number);
     } else {
       return await _getCachedNumberTrivia();
@@ -63,7 +63,7 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
 
   @override
   Future<Either<Failure, NumberTrivia>> getRandomNumberTrivia() async {
-    if (await networkInfo.isConnected) {
+    if (await netWorkInfo.isConnected) {
       return await _getRemoteNumberTrivia();
     } else {
       return await _getCachedNumberTrivia();

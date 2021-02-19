@@ -5,9 +5,9 @@ import 'package:number_trivia/features/number_trivia/data/datasources/number_tri
 import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model/number_trivia_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPreferenceNumberTriviaLocalDataSource
+class SharedPreferencesNumberTriviaLocalDataSource
     implements NumberTriviaLocalDataSource {
-  SharedPreferenceNumberTriviaLocalDataSource(
+  SharedPreferencesNumberTriviaLocalDataSource(
     this.cacheManager,
   );
 

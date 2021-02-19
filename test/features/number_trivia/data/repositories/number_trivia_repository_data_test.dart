@@ -18,7 +18,7 @@ class MockLocalDataSource extends Mock implements NumberTriviaLocalDataSource {}
 class MockNetworkInfo extends Mock implements NetWorkInfoChecker {}
 
 void main() {
-  NumberTriviaRepositoryImpl repository;
+  NumberTriviaRepositoryData repository;
   MockLocalDataSource mockLocalDataSource;
   MockRemoteDataSource mockRemoteDataSource;
   MockNetworkInfo mockNetworkInfo;
@@ -27,10 +27,10 @@ void main() {
     mockRemoteDataSource = MockRemoteDataSource();
     mockLocalDataSource = MockLocalDataSource();
     mockNetworkInfo = MockNetworkInfo();
-    repository = NumberTriviaRepositoryImpl(
+    repository = NumberTriviaRepositoryData(
       remoteDataSource: mockRemoteDataSource,
       localDataSource: mockLocalDataSource,
-      networkInfo: mockNetworkInfo,
+      netWorkInfo: mockNetworkInfo,
     );
   });
 
