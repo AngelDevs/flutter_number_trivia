@@ -1,18 +1,18 @@
 # number_trivia
 
-A flutter project based on clean architecture.
+A flutter project using clean architecture.
 
 ## This project is a personalized course project
 
-This projects is from reso coder clean architecture with some modifications in aproach and libraries.
+This projects is from reso coder clean architecture with some modifications in approach and libraries.
 
-A list of changes here:
+A list of the changes made here:
 
 * change of the naming convention for implementations classes. Using the name of the library instead of the code smell "Impl".
 * a change in code organization to better comply with personal practices.
 * use of the freezed package.
 * use of json serializable.
-* use of riverpod as state managment tool.
+* use of riverpod as state managment tool and state notifier.
 * use of connectivity package.
 * remove of get_it package.
 * minor UI Changes
@@ -28,6 +28,7 @@ In this project i learn to:
 * refined my knowledge of the repository pattern.
 * refined my knowledge of the denpendency injection principle
 * refined my knowledge of the dependency inversion principle.
+* test my projects and mock classes.
 
 All my thanks to reso coder and his guides for becoming a better flutter developer.
 
