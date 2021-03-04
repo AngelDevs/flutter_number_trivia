@@ -1,16 +1,34 @@
 # number_trivia
 
-A new Flutter project.
+A flutter project based on clean architecture.
 
-## Getting Started
+## This project is a personalized course project
 
-This project is a starting point for a Flutter application.
+This projects is from reso coder clean architecture with some modifications in aproach and libraries.
 
-A few resources to get you started if this is your first Flutter project:
+A list of changes here:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+* change of the naming convention for implementations classes. Using the name of the library instead of the code smell "Impl".
+* a change in code organization to better comply with personal practices.
+* use of the freezed package.
+* use of json serializable.
+* use of riverpod as state managment tool.
+* use of connectivity package.
+* remove of get_it package.
+* minor UI Changes
+* added some more tests.
+ 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+In this project i learn to:
+
+* implement clean architecture practices to write organized, clean and testable code.
+* refined my habilities of consuming API's by using cache techinques (simple ones).
+* state reaction to connectivity chages.
+* use of the retry package to retry connections.
+* refined my knowledge of the repository pattern.
+* refined my knowledge of the denpendency injection principle
+* refined my knowledge of the dependency inversion principle.
+
+All my thanks to reso coder and his guides for becoming a better flutter developer.
+
+This is a project from a course but i can translate it to another projects and make use of it to build better, more complex apps.
