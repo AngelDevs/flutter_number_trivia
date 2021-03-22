@@ -16,6 +16,7 @@ final headersProvider = Provider(
 final inputConverterProvider = Provider(
   (ref) => InputConverter(),
 );
+
 final networkInfoProvider = Provider(
   (ref) => ConnectivityNetWorkInfoChecker(Connectivity()),
 );
